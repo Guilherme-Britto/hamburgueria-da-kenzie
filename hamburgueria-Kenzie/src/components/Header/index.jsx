@@ -12,7 +12,7 @@ export function Header({ setSerch }) {
     return (
         <header>
             <h1><b>Burguer</b>Kenzie</h1>
-            <form>
+            <form onSubmit={submit}>
                 {/* <input type="text" value={serchValue} onChange={(e) => e.target.value} /> */}
                 <button type="submit">Pesquisar</button>
             </form>

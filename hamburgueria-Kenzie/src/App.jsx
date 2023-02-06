@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import { parse, v4 as uuid } from "uuid"
 import './App.css'
 import axios from "axios"
-import { Card } from './components/Card'
+import { List } from './components/List'
 import { Cart } from './components/Cart'
 import { Header } from './components/Header'
 import { ToastContainer, toast } from "react-toastify"
@@ -15,13 +15,14 @@ function App() {
   const [loading, SetLoading] = useState(false)
   const [list, setList] = useState([])
   const [cartList, setCartList] = useState(localList ? JSON.parse(localList) : [])
+  const [serch, setSerch] = useState("")
+
 
   useEffect(() => {
     localStorage.setItem("@HAMBURGUERKENZIE", JSON.stringify(cartList))
   }, [cartList])
 
   useEffect(() => {
-
     async function getList() {
 
       try {
@@ -78,10 +79,10 @@ function App() {
   return (
     <>
       <body className="App">
-        <Header />
+        <Header setSerch={setSerch}/>
         {loading ? <h1>Carregando</h1> :
           <main>
-            <Card list={list} addToCart={addToCart} />
+            <List list={list} addToCart={addToCart} />
             <Cart cartList={cartList} removeFromCart={removeFromCart} removeAllFromCart={removeAllFromCart} totalPrice={totalPrice} />
           </main>}
         <ToastContainer

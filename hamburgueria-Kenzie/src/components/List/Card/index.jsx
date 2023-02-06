@@ -1,5 +1,5 @@
 
-export function AddButton({element, addToCart}){
+export function Card({element, addToCart}){
 
     return(
         <li>
