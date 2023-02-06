@@ -18,7 +18,7 @@ function App() {
   const [search, setSearch] = useState("")
 
   const searchList = list.filter(element => {
-    return search === ""? true: (element.name.toLowerCase() ).includes(search.toLowerCase()) || (element.category.toLowerCase()).includes(search.toLowerCase())
+    return search === ""? false: (element.name.toLowerCase() ).includes(search.toLowerCase()) || (element.category.toLowerCase()).includes(search.toLowerCase())
   })
 
   console.log(searchList)
@@ -88,7 +88,12 @@ function App() {
         <Header setSearch={setSearch}/>
         {loading ? <h1>Carregando</h1> :
           <main>
-            <List list={list} addToCart={addToCart} />
+            {search.length == "" ? <List list={list} addToCart={addToCart} />:
+            <>
+            <h2>Resultados para: <span>{search}</span></h2>
+            <List list={searchList} addToCart={addToCart} />
+            </>
+            }
             <Cart cartList={cartList} removeFromCart={removeFromCart} removeAllFromCart={removeAllFromCart} totalPrice={totalPrice} />
           </main>}
         <ToastContainer
