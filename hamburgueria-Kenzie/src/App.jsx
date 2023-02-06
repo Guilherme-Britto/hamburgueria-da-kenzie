@@ -15,8 +15,13 @@ function App() {
   const [loading, SetLoading] = useState(false)
   const [list, setList] = useState([])
   const [cartList, setCartList] = useState(localList ? JSON.parse(localList) : [])
-  const [serch, setSerch] = useState("")
+  const [search, setSearch] = useState("")
 
+  const searchList = list.filter(element => {
+    return search === ""? true: (element.name.toLowerCase() ).includes(search.toLowerCase()) || (element.category.toLowerCase()).includes(search.toLowerCase())
+  })
+
+  console.log(searchList)
 
   useEffect(() => {
     localStorage.setItem("@HAMBURGUERKENZIE", JSON.stringify(cartList))
@@ -30,6 +35,7 @@ function App() {
         const response = await axios.get('https://hamburgueria-kenzie-json-serve.herokuapp.com/products',{
         timeout: 5000
         })
+        console.log(response)
         setList(response.data)
       } catch (error) {
       }
@@ -78,8 +84,8 @@ function App() {
 
   return (
     <>
-      <body className="App">
-        <Header setSerch={setSerch}/>
+      <div className="App">
+        <Header setSearch={setSearch}/>
         {loading ? <h1>Carregando</h1> :
           <main>
             <List list={list} addToCart={addToCart} />
@@ -96,7 +102,7 @@ function App() {
         draggable
         pauseOnHover
         theme="light"/>
-      </body>
+      </div>
     </>
   )
 }
