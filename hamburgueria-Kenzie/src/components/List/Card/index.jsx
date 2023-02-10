@@ -1,13 +1,17 @@
 
-export function Card({element, addToCart}){
+export function Card({ element, addToCart }) {
 
-    return(
+    return (
         <li>
-            <img src={element.img} alt="alimento" />
-            <h2>{element.name}</h2>
-            <span>{element.category}</span>
-            <p>R$ {element.price.toFixed(2)}</p>
-            <button onClick={() => addToCart(element)}>Adicionar</button>
+            <div>
+                <div>
+                    <img className="img__container" src={element.img} alt="alimento" />
+                </div>
+                <h3>{element.name}</h3>
+                <span>{element.category}</span>
+                <p>R$ {element.price.toFixed(2)}</p>
+                <button onClick={() => addToCart(element)}>Adicionar</button>
+            </div>
         </li>
     )
 }

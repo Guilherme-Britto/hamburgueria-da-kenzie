@@ -1,4 +1,5 @@
 import { useState } from "react"
+import { StyledHeaderr } from "./style"
 
 export function Header({ setSearch }) {
     const [searchValue, setSearchValue] = useState("")
@@ -6,16 +7,15 @@ export function Header({ setSearch }) {
     const submit = (e) => {
         e.preventDefault()
         setSearch(searchValue)
-        setSearchValue("")
     }
 
     return (
-        <header>
+        <StyledHeaderr>
             <h1><b>Burguer</b>Kenzie</h1>
             <form onSubmit={submit}>
-                <input type="text" onChange={(e) => setSearchValue(e.target.value)} />
+                <input type="text" placeholder="Digitar Pesquisa" onChange={(e) => setSearchValue(e.target.value)} />
                 <button type="submit">Pesquisar</button>
             </form>
-        </header>
+        </StyledHeaderr>
     )
 }

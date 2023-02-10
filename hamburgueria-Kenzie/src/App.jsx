@@ -1,13 +1,12 @@
 import { useState, useEffect } from 'react'
 import { parse, v4 as uuid } from "uuid"
-import './App.css'
-import axios from "axios"
 import { List } from './components/List'
 import { Cart } from './components/Cart'
 import { Header } from './components/Header'
 import { ToastContainer, toast } from "react-toastify"
-import "react-toastify/dist/ReactToastify.css";
-
+import "react-toastify/dist/ReactToastify.css"
+import { api } from "./service/api"
+import { StyledSearch } from './styles/style'
 
 function App() {
 
@@ -18,10 +17,8 @@ function App() {
   const [search, setSearch] = useState("")
 
   const searchList = list.filter(element => {
-    return search === ""? false: (element.name.toLowerCase() ).includes(search.toLowerCase()) || (element.category.toLowerCase()).includes(search.toLowerCase())
+    return search === "" ? true : (element.name.toLowerCase()).includes(search.toLowerCase()) || (element.category.toLowerCase()).includes(search.toLowerCase())
   })
-
-  console.log(searchList)
 
   useEffect(() => {
     localStorage.setItem("@HAMBURGUERKENZIE", JSON.stringify(cartList))
@@ -32,9 +29,10 @@ function App() {
 
       try {
         SetLoading(true)
-        const response = await axios.get('https://hamburgueria-kenzie-json-serve.herokuapp.com/products',{
-        timeout: 5000
-        })
+
+
+        const response = await api.get('/products')
+
         console.log(response)
         setList(response.data)
       } catch (error) {
@@ -50,7 +48,7 @@ function App() {
 
     const findElement = cartList.find(e => e.id === element.id);
 
-    if(findElement){
+    if (findElement) {
       return toast.error("Item já adicionado!", {
         position: toast.POSITION.TOP_CENTER
       })
@@ -85,28 +83,29 @@ function App() {
   return (
     <>
       <div className="App">
-        <Header setSearch={setSearch}/>
+        <Header setSearch={setSearch} />
         {loading ? <h1>Carregando</h1> :
           <main>
-            {search.length == "" ? <List list={list} addToCart={addToCart} />:
-            <>
-            <h2>Resultados para: <span>{search}</span></h2>
-            <List list={searchList} addToCart={addToCart} />
-            </>
+            {search.length == "" ? <></> :
+              <StyledSearch>
+                <h2>Resultados para: <span>{search}</span></h2>
+                <button onClick={() => setSearch("")}>Limpar busca</button>
+              </StyledSearch>
             }
+            <List list={searchList} addToCart={addToCart} />
             <Cart cartList={cartList} removeFromCart={removeFromCart} removeAllFromCart={removeAllFromCart} totalPrice={totalPrice} />
           </main>}
         <ToastContainer
-        position="top-right"
-        autoClose={5000}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-        theme="light"/>
+          position="top-right"
+          autoClose={5000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme="light" />
       </div>
     </>
   )
