@@ -146,20 +146,7 @@ Button {
 
     background: transparent;
 
-    background-color: var(--Color-primary);
-    color: var(--WhiteFixed);
-
-    border-radius: 8px;
-    width: 107px;
-    height: 40px;
-
     font-family: 'Inter', sans-serif;
-    font-size: .9rem;
-    font-weight: 500;
-
-    &:hover{
-        background-color: var(--Color-primary-50);
-    }
 }
 
 :root {
@@ -173,6 +160,5 @@ Button {
   --Gray50: #828282;
   --Gray100: #333333;
   --BlackFixed: #000000;
-  
 }
 `

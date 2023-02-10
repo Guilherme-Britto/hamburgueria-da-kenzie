@@ -9,9 +9,8 @@ export function Cart({ cartList, removeFromCart, removeAllFromCart, totalPrice }
             <>
                 <h2>Carrinho de compras</h2>
             </>
-            <StyledCartInfo cartList={cartList}>
+            <StyledCartInfo>
                 {cartList.length == 0 ?
-
                     <>
                         <p>Sua sacola está vazia</p>
                         <span>Adicione itens</span>

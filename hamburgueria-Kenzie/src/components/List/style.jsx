@@ -10,6 +10,11 @@ export const StyledList = styled.ul`
 
     overflow-x: auto;
 
+    @media(min-width: 769px){
+        overflow-x: unset;
+        flex-wrap: wrap;
+    }
+
     li{
         div{
             border: 2px solid var(--Gray20);
@@ -66,12 +71,23 @@ export const StyledList = styled.ul`
             }
 
             button{
+                background-color: var(--Color-primary);
+                color: var(--WhiteFixed);
+
+                border-radius: 8px;
+                width: 107px;
+                height: 40px;
+
                 font-size: .8rem;
                 font-weight: 500;
 
                 margin-top: 15px;
                 margin-left: 21px;
                 margin-bottom: 23px;
+
+                &:hover{
+                    background-color: var(--Color-primary-50);
+                }
             }
         }}
 `

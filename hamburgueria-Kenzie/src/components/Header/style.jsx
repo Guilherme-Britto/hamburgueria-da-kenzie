@@ -8,6 +8,7 @@ export const StyledHeaderr = styled.header`
     width: 100%;
     padding: 14px 0;
 
+
     h1{
         width: 100%;
         line-height: 2rem;
@@ -66,15 +67,37 @@ export const StyledHeaderr = styled.header`
 
         button{
             margin-right: 15px;
+            background-color: var(--Color-primary);
+            color: var(--WhiteFixed);
+
+            border-radius: 8px;
+            width: 107px;
+            height: 40px;
+
+            font-size: .9rem;
+            font-weight: 500;
+
+            &:hover{
+                background-color: var(--Color-primary-50);
+            }
         }
     }
 
-    @media(min-width: 768px){
-
-        display: flex;
-        align-items: center;
+    @media(min-width: 769px){
 
         height: 80px;
+
+        display: flex;
+        justify-content: center;
+
+        width: 100%;
+
+        div{
+            display: flex;
+            align-items: center;
+            width: 100%;
+            max-width: 1400px;
+        }
 
         h1{
             text-align: start;
@@ -83,8 +106,9 @@ export const StyledHeaderr = styled.header`
 
         form{
             margin: 0;
+            margin-right: 16px;
 
-            width: 365px;
+            width: 505px;
         }
     }
 `

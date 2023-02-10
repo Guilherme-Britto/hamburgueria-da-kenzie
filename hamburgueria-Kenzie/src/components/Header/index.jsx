@@ -11,11 +11,13 @@ export function Header({ setSearch }) {
 
     return (
         <StyledHeaderr>
-            <h1><b>Burguer</b>Kenzie</h1>
-            <form onSubmit={submit}>
-                <input type="text" placeholder="Digitar Pesquisa" onChange={(e) => setSearchValue(e.target.value)} />
-                <button type="submit">Pesquisar</button>
-            </form>
+            <div>
+                <h1><b>Burguer</b>Kenzie</h1>
+                <form onSubmit={submit}>
+                    <input type="text" placeholder="Digitar Pesquisa" onChange={(e) => setSearchValue(e.target.value)} />
+                    <button type="submit">Pesquisar</button>
+                </form>
+            </div>
         </StyledHeaderr>
     )
 }

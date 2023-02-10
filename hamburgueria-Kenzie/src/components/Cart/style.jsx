@@ -5,8 +5,6 @@ export const StyledCart = styled.aside`
     margin: 0 16px;
     margin-top: 20px;
 
-
-
     h2{
         display: flex;
         align-items: center;
@@ -20,6 +18,11 @@ export const StyledCart = styled.aside`
         height: 65px;
         border-radius: 8px 8px 0 0;
         padding-left: 20px;
+    }
+
+    @media(min-width: 769px){
+        max-width: 365px;
+        min-width: 365px;
     }
 `
 export const StyledCartInfo = styled.section`
@@ -148,14 +151,19 @@ div{
         display: block;
 
         margin: 0 auto;
+        margin-top: 22px;
+
+        border-radius: 8px;
 
         font-weight: 600;
 
-        margin-top: 22px;
-
         background-color: var(--Gray20);
-
         color: var(--Gray50);
+
+        &:hover{
+            background-color: var(--Gray50);
+            color: var(--Gray20);
+            }
     }
 `
 

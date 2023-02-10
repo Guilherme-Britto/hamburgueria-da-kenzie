@@ -6,7 +6,7 @@ import { Header } from './components/Header'
 import { ToastContainer, toast } from "react-toastify"
 import "react-toastify/dist/ReactToastify.css"
 import { api } from "./service/api"
-import { StyledSearch } from './styles/style'
+import { StyledSearch, StyledMain, StyledPageWidth } from './styles/style'
 
 function App() {
 
@@ -33,7 +33,6 @@ function App() {
 
         const response = await api.get('/products')
 
-        console.log(response)
         setList(response.data)
       } catch (error) {
       }
@@ -85,16 +84,21 @@ function App() {
       <div className="App">
         <Header setSearch={setSearch} />
         {loading ? <h1>Carregando</h1> :
-          <main>
-            {search.length == "" ? <></> :
-              <StyledSearch>
-                <h2>Resultados para: <span>{search}</span></h2>
-                <button onClick={() => setSearch("")}>Limpar busca</button>
-              </StyledSearch>
-            }
-            <List list={searchList} addToCart={addToCart} />
-            <Cart cartList={cartList} removeFromCart={removeFromCart} removeAllFromCart={removeAllFromCart} totalPrice={totalPrice} />
-          </main>}
+          <StyledPageWidth>
+            <StyledMain>
+              <div>
+                {search.length == "" ? <></> :
+                  <StyledSearch>
+                    <h2>Resultados para: <span>{search}</span></h2>
+                    <button onClick={() => setSearch("")}>Limpar busca</button>
+                  </StyledSearch>
+                }
+                <List list={searchList} addToCart={addToCart} />
+              </div>
+              <Cart cartList={cartList} removeFromCart={removeFromCart} removeAllFromCart={removeAllFromCart} totalPrice={totalPrice} />
+            </StyledMain>
+          </StyledPageWidth>
+        }
         <ToastContainer
           position="top-right"
           autoClose={5000}
