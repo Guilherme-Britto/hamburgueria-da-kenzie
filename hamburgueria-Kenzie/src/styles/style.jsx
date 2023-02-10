@@ -49,18 +49,17 @@ button{
 
 export const StyledMain = styled.main`
 
-    max-width: 1400px;
-
-
     @media(min-width: 769px){
         display: flex;
+        max-width: 1400px;
     }
 `
 export const StyledPageWidth = styled.div`
 
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-
+    @media(min-width: 769px){
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
 `
