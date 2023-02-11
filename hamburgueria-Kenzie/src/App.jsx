@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { parse, v4 as uuid } from "uuid"
+import { v4 as uuid } from "uuid"
 import { List } from './components/List'
 import { Cart } from './components/Cart'
 import { Header } from './components/Header'
@@ -39,6 +39,7 @@ function App() {
       finally {
         SetLoading(false)
       }
+
     }
     getList()
   }, [])
@@ -101,7 +102,7 @@ function App() {
         }
         <ToastContainer
           position="top-right"
-          autoClose={5000}
+          autoClose={1000}
           hideProgressBar={false}
           newestOnTop={false}
           closeOnClick
